@@ -4,7 +4,7 @@ pipeline {
         stage ('Build Servlet Project') {
             steps {
                 /*For windows machine */
-              // bat  '/u01/soft/apache-maven-3.6.2/bin/mvn clean package'
+               //bat  '/u01/soft/apache-maven-3.6.2/bin/mvn clean package'
  
                 /*For Mac & Linux machine */
                 sh  '/u01/soft/apache-maven-3.6.2/bin/mvn clean package'
@@ -16,6 +16,14 @@ pipeline {
  
                     archiveArtifacts artifacts : '**/*.war'
                 }
+            }
+        }
+ 
+        stage ('Deploy Build in Staging Area'){
+            steps{
+ 
+                build job : 'deploy-staging-pipeline'
+ 
             }
         }
     }
