@@ -4,10 +4,10 @@ pipeline {
         stage ('Build Servlet Project') {
             steps {
                 /*For windows machine */
-              // bat  'mvn clean package'
+              // bat  '/u01/soft/apache-maven-3.6.2/bin/mvn clean package'
  
                 /*For Mac & Linux machine */
-                sh  'mvn clean package'
+                sh  '/u01/soft/apache-maven-3.6.2/bin/mvn clean package'
             }
  
             post{
